@@ -1,5 +1,7 @@
 # OWLVEY_UI (React and Bootstrap4)
 
+[![Build Status](https://travis-ci.com/owlvey/owlvey_ui.svg?branch=master)](https://travis-ci.com/owlvey/owlvey_ui)
+
 ## Preview
 
 You can check out [live preview](https://comming-soon/).
