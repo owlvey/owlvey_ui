@@ -1,0 +1,97 @@
+import React from "react";
+import classnames from "classnames";
+
+class CreateProduct extends React.Component {
+  state = { formData: {}, isSubmitting: false, messageError: null };
+
+  componentDidMount() {
+    this.setState({
+      formData: {
+        ...this.state.formData,
+      },
+    });
+  }
+
+  handleSubmitFormt = event => {
+    event.preventDefault();
+    const { createProduct, closeModal, currentCustomer } = this.props;
+    this.setState(
+      {
+        formData: {
+          ...this.state.formData,
+          customer_id: currentCustomer.customerId,
+        },
+        isSubmitting: true,
+        messageError: null,
+      },
+      () => {
+        createProduct(this.state.formData)
+          .then(() => {
+            closeModal();
+          })
+          .catch(error => {
+            this.setState({ isSubmitting: false, messageError: error.message });
+          });
+      },
+    );
+  };
+
+  changeInput = event => {
+    const { value, name } = event.target;
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [name]: value,
+      },
+      [`${name}Valid`]: value !== "",
+    });
+  };
+
+  render() {
+    const { isSubmitting, messageError } = this.state;
+    return (
+      <form
+        onSubmit={this.handleSubmitFormt}
+        className={classnames({ "submitting-form": isSubmitting })}
+      >
+        <h1>Create a new Product</h1>
+        <div className="form-group">
+          <label>Name</label>
+          <input
+            type="text"
+            name="name"
+            onChange={this.changeInput}
+            className="form-control form-control-lg"
+            aria-describedby="emailHelp"
+            placeholder="Product Name"
+          />
+        </div>
+        <div className="form-group">
+          <label>Avatar</label>
+          <input
+            type="text"
+            name="avatar"
+            onChange={this.changeInput}
+            className="form-control form-control-lg"
+            placeholder="Avatar URL"
+          />
+          {messageError && (
+            <small className="form-text text-danger">{messageError}</small>
+          )}
+        </div>
+        <button type="submit" className="btn btn-primary">
+          {isSubmitting && (
+            <span
+              className="spinner-grow spinner-grow-sm mr-3"
+              role="status"
+              aria-hidden="true"
+            />
+          )}
+          Submit
+        </button>
+      </form>
+    );
+  }
+}
+
+export default CreateProduct;

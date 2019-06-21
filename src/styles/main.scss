@@ -1,0 +1,37 @@
+@import "variables";
+
+// libraries
+@import "~bootstrap/scss/bootstrap.scss";
+//TODO remove all reference from @fortawesome
+// @import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~react-infinite-calendar/styles.css";
+
+// base
+@import "base";
+@import "overrides";
+@import "extends";
+@import "animations";
+@import "utils/utils";
+
+// components shared
+@import "components/shared/avatar";
+@import "components/shared/iconWidget";
+@import "components/shared/selector";
+@import "components/shared/mirror-comparer";
+@import "components/shared/feature-comparer";
+
+// components
+@import "components/header";
+@import "components/sidebar";
+@import "components/content";
+@import "components/page";
+@import "components/widget";
+@import "components/search-input";
+@import "components/button";
+@import "components/process/case/CaseView";
+
+// themes
+@import "themes/colors";
+
+// demos (only for demo pages)
+@import "demos/demos";
