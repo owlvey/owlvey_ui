@@ -9,7 +9,7 @@ import NotificationSystem from "react-notification-system";
 import { NOTIFICATION_SYSTEM_STYLE } from "utils/constants";
 
 import AccountContainer from "components/auth/AccountContainer";
-import CustomerViewContainer from "components/customers/CustomerViewContainer";
+import CustomerContainer from "components/customers/CustomerContainer";
 import ProductContainer from "components/products/ProductContainer";
 import ProcessContainer from "components/process/ProcessContainer";
 import BenchmarkContainer from "components/benchmark/BenchmarkContainer";
@@ -165,7 +165,7 @@ class MainLayout extends React.Component {
           <Switch>
             <Route exact path="/" component={DashboardPage} />
             <Route exact path="/account" component={AccountContainer} />
-            <Route exact path="/customers" component={CustomerViewContainer} />
+            <Route exact path="/customers" component={CustomerContainer} />
             <Route exact path="/products" component={ProductContainer} />
             <Route path="/process" component={ProcessContainer} />
             <Route exact path="/benchmark" component={BenchmarkContainer} />

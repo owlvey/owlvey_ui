@@ -13,7 +13,12 @@ function MembsershipContainer({
   searchUsers,
   addMember,
   removeMember,
+  history
 }) {
+  if (!currentCustomer) {
+    history.push("/customers");
+    return null;
+  }
   useEffect(() => {
     if (currentCustomer.customerId) {
       getMembersByCustomer(currentCustomer.customerId);
@@ -41,14 +46,17 @@ function mapStateToProps(state) {
   const currentCustomer = entitySelectors.getEntityById(
     state,
     "customer",
-    state.customer.current,
+    state.customer.current
   );
-  const users = entitySelectors.getCollectionByIds(
-    state,
-    "user",
-    currentCustomer.users,
-    false,
-  );
+  console.log("currentCustomer: ", currentCustomer);
+  const users =
+    currentCustomer &&
+    entitySelectors.getCollectionByIds(
+      state,
+      "user",
+      currentCustomer.users,
+      false
+    );
   const isLoadingMembership = entitySelectors.getFetchingStatus(state, "user")
     .isLoading;
 
@@ -56,7 +64,7 @@ function mapStateToProps(state) {
     currentCustomer,
     users,
     isLoadingMembership,
-    currentUser,
+    currentUser
   };
 }
 
@@ -69,11 +77,11 @@ function mapDispatchToProps(dispatch) {
     addMember: (customerId, user) =>
       dispatch(membershipOperations.addUserMember(customerId, user)),
     removeMember: (customerId, userId) =>
-      dispatch(membershipOperations.removeUserMember(customerId, userId)),
+      dispatch(membershipOperations.removeUserMember(customerId, userId))
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(MembsershipContainer);
