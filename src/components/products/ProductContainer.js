@@ -6,10 +6,16 @@ import { FaMedapps } from "react-icons/fa";
 import { TiPlus } from "react-icons/ti";
 
 function ProductContainer({
+  currentCustomer,
   products,
   openCreateProductModal,
   setCurrentProduct,
+  history
 }) {
+  if (!currentCustomer) {
+    history.push("/customers");
+    return null;
+  }
   if (products && products.length > 0) {
     return (
       <ProductView products={products} setCurrentProduct={setCurrentProduct} />
@@ -36,15 +42,18 @@ function mapStateToProps(state) {
   const currentCustomer = entitySelectors.getEntityById(
     state,
     "customer",
-    state.customer.current,
+    state.customer.current
   );
-  const products = entitySelectors.getCollectionByIds(
-    state,
-    "product",
-    currentCustomer.products,
-  );
+  const products =
+    currentCustomer &&
+    entitySelectors.getCollectionByIds(
+      state,
+      "product",
+      currentCustomer.products
+    );
   return {
-    products,
+    currentCustomer,
+    products
   };
 }
 
@@ -55,11 +64,11 @@ function mapDispatchToProps(dispatch, ownProps) {
       ownProps.history.push("/process");
     },
     openCreateProductModal: () =>
-      dispatch(modalActions.openModalFullScreen("createProduct")),
+      dispatch(modalActions.openModalFullScreen("createProduct"))
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(ProductContainer);
