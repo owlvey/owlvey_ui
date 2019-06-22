@@ -48,7 +48,6 @@ function mapStateToProps(state) {
     "customer",
     state.customer.current
   );
-  console.log("currentCustomer: ", currentCustomer);
   const users =
     currentCustomer &&
     entitySelectors.getCollectionByIds(
