@@ -4,7 +4,7 @@
 
 ## Preview
 
-You can check out [live preview](https://comming-soon/).
+You can check out [live preview](https://owlvey-ui.firebaseapp.com/).
 
 ## Quick Start
 

@@ -12,7 +12,6 @@ import AccountContainer from "components/auth/AccountContainer";
 import CustomerViewContainer from "components/customers/CustomerViewContainer";
 import ProductContainer from "components/products/ProductContainer";
 import ProcessContainer from "components/process/ProcessContainer";
-import WorkbenchContainer from "components/workbench/workbenchContainer";
 import BenchmarkContainer from "components/benchmark/BenchmarkContainer";
 import FeatureBenContainer from "components/benchmark/feature/FeatureBenContainer";
 import ScenarioBenContainer from "components/benchmark/scenario/ScenarioBenContainer";
@@ -72,7 +71,7 @@ class MainLayout extends React.Component {
       this.notificationSystem.addNotification({
         title: <MdImportantDevices />,
         message: "Welome to Owlvey Admin!",
-        level: "info",
+        level: "info"
       });
     }, 1500);
 
@@ -85,7 +84,7 @@ class MainLayout extends React.Component {
         title: <MdLoyalty />,
         message:
           "Owlvey is carefully designed app powered by React and Bootstrap4!",
-        level: "info",
+        level: "info"
       });
     }, 2500);
   }
@@ -144,7 +143,7 @@ class MainLayout extends React.Component {
       setCurrentProduct,
       isLoadingProduct,
       openCreateCustomerModal,
-      openCreateProductModal,
+      openCreateProductModal
     } = this.props;
     return (
       <main className="cr-app bg-light">
@@ -169,7 +168,6 @@ class MainLayout extends React.Component {
             <Route exact path="/customers" component={CustomerViewContainer} />
             <Route exact path="/products" component={ProductContainer} />
             <Route path="/process" component={ProcessContainer} />
-            <Route exact path="/workbench" component={WorkbenchContainer} />
             <Route exact path="/benchmark" component={BenchmarkContainer} />
             <Route
               exact
