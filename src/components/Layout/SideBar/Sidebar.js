@@ -21,7 +21,7 @@ import {
   MdViewDay,
   MdViewList,
   MdWeb,
-  MdWidgets,
+  MdWidgets
 } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import {
@@ -30,7 +30,7 @@ import {
   Nav,
   Navbar,
   NavItem,
-  NavLink as BSNavLink,
+  NavLink as BSNavLink
 } from "reactstrap";
 import bn from "utils/bemnames";
 
@@ -46,7 +46,7 @@ const navComponents = [
     to: "/button-groups",
     name: "Button groups",
     exact: false,
-    Icon: MdGroupWork,
+    Icon: MdGroupWork
   },
   { to: "/forms", name: "Forms", exact: false, Icon: MdChromeReaderMode },
   { to: "/input-groups", name: "Input Groups", exact: false, Icon: MdViewList },
@@ -54,17 +54,17 @@ const navComponents = [
     to: "/dropdowns",
     name: "Dropdowns",
     exact: false,
-    Icon: MdArrowDropDownCircle,
+    Icon: MdArrowDropDownCircle
   },
   { to: "/badges", name: "Badges", exact: false, Icon: MdStar },
   { to: "/alerts", name: "Alerts", exact: false, Icon: MdNotificationsActive },
   { to: "/progress", name: "Progress", exact: false, Icon: MdBrush },
-  { to: "/modals", name: "Modals", exact: false, Icon: MdViewDay },
+  { to: "/modals", name: "Modals", exact: false, Icon: MdViewDay }
 ];
 
 const navContents = [
   { to: "/typography", name: "Typography", exact: false, Icon: MdTextFields },
-  { to: "/tables", name: "Tables", exact: false, Icon: MdBorderAll },
+  { to: "/tables", name: "Tables", exact: false, Icon: MdBorderAll }
 ];
 
 const pageContents = [
@@ -73,8 +73,8 @@ const pageContents = [
     to: "/login-modal",
     name: "Login modal",
     exact: false,
-    Icon: MdViewCarousel,
-  },
+    Icon: MdViewCarousel
+  }
 ];
 
 const pageControls = [
@@ -82,63 +82,63 @@ const pageControls = [
     to: "/styleguide/avatar",
     name: "Avatar",
     exact: false,
-    Icon: MdAccountCircle,
+    Icon: MdAccountCircle
   },
   {
     to: "/styleguide/dropdown",
     name: "Dropdown",
     exact: false,
-    Icon: MdAccountCircle,
+    Icon: MdAccountCircle
   },
   {
     to: "/styleguide/iconwidget",
     name: "IconWidget",
     exact: false,
-    Icon: MdAccountCircle,
+    Icon: MdAccountCircle
   },
   {
     to: "/styleguide/numberwidget",
     name: "NumberWidget",
     exact: false,
-    Icon: MdAccountCircle,
+    Icon: MdAccountCircle
   },
   {
     to: "/styleguide/searchinput",
     name: "SearchInput",
     exact: false,
-    Icon: MdAccountCircle,
+    Icon: MdAccountCircle
   },
   {
     to: "/styleguide/avatarcard",
     name: "AvatarCard",
     exact: false,
-    Icon: MdAccountCircle,
+    Icon: MdAccountCircle
   },
   {
     to: "/styleguide/usercard",
     name: "UserCard",
     exact: false,
-    Icon: MdAccountCircle,
+    Icon: MdAccountCircle
   },
   {
     to: "/styleguide/announcementcard",
     name: "AnnouncementCard",
     exact: false,
-    Icon: MdAccountCircle,
+    Icon: MdAccountCircle
   },
   {
     to: "/styleguide/todoscard",
     name: "TodosCard",
     exact: false,
-    Icon: MdAccountCircle,
-  },
+    Icon: MdAccountCircle
+  }
 ];
 
 const navItems = [
   { to: "/", name: "Dashboard", exact: true, Icon: MdDashboard },
   { to: "/cards", name: "Cards", exact: false, Icon: MdWeb },
   { to: "/charts", name: "Charts", exact: false, Icon: MdInsertChart },
-  { to: "/widgets", name: "Widgets", exact: false, Icon: MdWidgets },
+  { to: "/widgets", name: "Widgets", exact: false, Icon: MdWidgets }
 ];
 
 const bem = bn.create("sidebar");
@@ -148,7 +148,7 @@ class Sidebar extends React.Component {
     isOpenComponents: true,
     isOpenContents: true,
     isOpenPages: true,
-    isOpenControls: true,
+    isOpenControls: true
   };
 
   handleClick = name => () => {
@@ -156,12 +156,15 @@ class Sidebar extends React.Component {
       const isOpen = prevState[`isOpen${name}`];
 
       return {
-        [`isOpen${name}`]: !isOpen,
+        [`isOpen${name}`]: !isOpen
       };
     });
   };
 
   renderDevMenu = () => {
+    if (process.env.IS_PROD) {
+      return null;
+    }
     return (
       <React.Fragment>
         <NavItem
@@ -181,7 +184,7 @@ class Sidebar extends React.Component {
                   ? "rotate(0deg)"
                   : "rotate(-90deg)",
                 transitionDuration: "0.3s",
-                transitionProperty: "transform",
+                transitionProperty: "transform"
               }}
             />
           </BSNavLink>
@@ -219,7 +222,7 @@ class Sidebar extends React.Component {
                     ? "rotate(0deg)"
                     : "rotate(-90deg)",
                   transitionDuration: "0.3s",
-                  transitionProperty: "transform",
+                  transitionProperty: "transform"
                 }}
               />
             </BSNavLink>
@@ -259,7 +262,7 @@ class Sidebar extends React.Component {
                     ? "rotate(0deg)"
                     : "rotate(-90deg)",
                   transitionDuration: "0.3s",
-                  transitionProperty: "transform",
+                  transitionProperty: "transform"
                 }}
               />
             </BSNavLink>
@@ -299,7 +302,7 @@ class Sidebar extends React.Component {
                     ? "rotate(0deg)"
                     : "rotate(-90deg)",
                   transitionDuration: "0.3s",
-                  transitionProperty: "transform",
+                  transitionProperty: "transform"
                 }}
               />
             </BSNavLink>
@@ -339,7 +342,7 @@ class Sidebar extends React.Component {
                     ? "rotate(0deg)"
                     : "rotate(-90deg)",
                   transitionDuration: "0.3s",
-                  transitionProperty: "transform",
+                  transitionProperty: "transform"
                 }}
               />
             </BSNavLink>
@@ -456,7 +459,6 @@ class Sidebar extends React.Component {
               </BSNavLink>
             </NavItem>
 
-            {/* TODO: rendeDevMENU only execute in dev mode */}
             {this.renderDevMenu()}
           </Nav>
         </div>

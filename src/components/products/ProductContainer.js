@@ -1,3 +1,4 @@
+import React from "react";
 import { connect } from "react-redux";
 import ProductView from "components/products/ProductView";
 import { entitySelectors, productActions, modalActions } from "ducks";

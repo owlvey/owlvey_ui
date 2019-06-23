@@ -11,7 +11,7 @@ import "bootstrap";
 import "./utils/jquery.images-compare.min";
 
 const rootEl = document.getElementById("root");
-window.store = owlveyStore;
+
 const renderApp = AppComponent => {
   render(
     <Provider store={owlveyStore}>
@@ -21,7 +21,10 @@ const renderApp = AppComponent => {
   );
 };
 
-externalizeComponents(); //TODO: make sure to execute only dev  mode
+if (!process.env.IS_PROD) {
+  externalizeComponents();
+  window.store = owlveyStore;
+}
 owlveyStore.dispatch(
   configurationActions.recieveAppConfApiUrl(`${process.env.API_URL}`)
 );

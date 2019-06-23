@@ -2,17 +2,18 @@ import React from "react";
 import Page from "shared/Page";
 import classNames from "classnames";
 import Avatar from "shared/Avatar";
+import UserCard from "shared/UserCard";
 
 class ProductView extends React.Component {
   state = {
     customerSelected: {},
     products: [],
-    showDetail: false,
+    showDetail: false
   };
 
   handleClickCloseDetail = () => {
     this.setState({
-      showDetail: false,
+      showDetail: false
     });
   };
 
@@ -42,7 +43,7 @@ class ProductView extends React.Component {
                   "bg-white",
                   customerSelected.customerId === item.customerId
                     ? classCardSelected
-                    : "mt-3",
+                    : "mt-3"
                 )}
                 avatar={item.avatar}
                 title={item.name}
@@ -57,11 +58,11 @@ class ProductView extends React.Component {
 
         <div
           className={classNames(classSideCardRight, "sideCardRight-60", {
-            sideCarOpen: showDetail,
+            sideCarOpen: showDetail
           })}
           style={{
             top: "-8px",
-            height: "140%",
+            height: "140%"
           }}
         >
           <button
@@ -70,7 +71,7 @@ class ProductView extends React.Component {
               position: "absolute",
               top: "0px",
               right: "10px",
-              fontSize: "2rem",
+              fontSize: "2rem"
             }}
             onClick={this.handleClickCloseDetail}
           >

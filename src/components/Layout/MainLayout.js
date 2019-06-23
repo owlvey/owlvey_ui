@@ -131,6 +131,31 @@ class MainLayout extends React.Component {
     this.props.history.push("/login");
   };
 
+  routingDevelopment = () => {
+    if (process.env.IS_PROD) return;
+    return (
+      <React.Fragment>
+        <Route exact path="/login-modal" component={AuthModalPage} />
+        <Route exact path="/buttons" component={ButtonPage} />
+        <Route exact path="/cards" component={CardPage} />
+        <Route exact path="/widgets" component={WidgetPage} />
+        <Route exact path="/typography" component={TypographyPage} />
+        <Route exact path="/alerts" component={AlertPage} />
+        <Route exact path="/tables" component={TablePage} />
+        <Route exact path="/badges" component={BadgePage} />
+        <Route exact path="/button-groups" component={ButtonGroupPage} />
+        <Route exact path="/dropdowns" component={DropdownPage} />
+        <Route exact path="/progress" component={ProgressPage} />
+        <Route exact path="/modals" component={ModalPage} />
+        <Route exact path="/forms" component={FormPage} />
+        <Route exact path="/input-groups" component={InputGroupPage} />
+        <Route exact path="/charts" component={ChartPage} />
+        <Route exact path="/register" component={AuthPage} />
+        <Route exact path="/styleguide/:name" component={Styleguide} />
+      </React.Fragment>
+    );
+  };
+
   render() {
     if (!authSelectors.isAuthValid()) return <Redirect to="/login" />;
     const {
@@ -190,25 +215,8 @@ class MainLayout extends React.Component {
               component={CaseBenContainer}
             />
             <Route exact path="/membership" component={MembershipContainer} />
-
-            <Route exact path="/login-modal" component={AuthModalPage} />
-            <Route exact path="/buttons" component={ButtonPage} />
-            <Route exact path="/cards" component={CardPage} />
-            <Route exact path="/widgets" component={WidgetPage} />
-            <Route exact path="/typography" component={TypographyPage} />
-            <Route exact path="/alerts" component={AlertPage} />
-            <Route exact path="/tables" component={TablePage} />
-            <Route exact path="/badges" component={BadgePage} />
-            <Route exact path="/button-groups" component={ButtonGroupPage} />
-            <Route exact path="/dropdowns" component={DropdownPage} />
-            <Route exact path="/progress" component={ProgressPage} />
-            <Route exact path="/modals" component={ModalPage} />
-            <Route exact path="/forms" component={FormPage} />
-            <Route exact path="/input-groups" component={InputGroupPage} />
-            <Route exact path="/charts" component={ChartPage} />
-            <Route exact path="/register" component={AuthPage} />
-            <Route exact path="/styleguide/:name" component={Styleguide} />
             <Route component={NotFoundPage} />
+            {this.routingDevelopment()}
           </Switch>
           <ModalContainer />
           <Footer />
