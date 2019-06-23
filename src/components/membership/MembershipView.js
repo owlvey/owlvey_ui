@@ -4,6 +4,7 @@ import { MdPersonPin } from "react-icons/md";
 import Avatar from "shared/Avatar";
 import DotDropdown from "shared/DotDropdown";
 import Autocomplete from "shared/Autocomplete";
+import classNames from "classnames";
 
 function MembershipView({
   memberships,
@@ -15,6 +16,7 @@ function MembershipView({
 }) {
   const [userSelected, setUserSelected] = useState(null);
   const [textAutocomplete, setTextAutocomplete] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSelectItem = user => {
     setUserSelected(user);
     setTextAutocomplete(user.username);
@@ -24,10 +26,32 @@ function MembershipView({
   };
 
   const handleClickAddMember = () => {
-    addMember(currentCustomer.customerId, userSelected);
+    setIsSubmitting(true);
+    addMember(currentCustomer.customerId, userSelected)
+      .then(() => {
+        setIsSubmitting(false);
+      })
+      .catch(() => {
+        setIsSubmitting(false);
+      });
     setUserSelected(null);
     setTextAutocomplete("");
   };
+
+  const handleClickRemoveMember = (customerId, userId) => {
+    setIsSubmitting(true);
+    removeMember(customerId, userId)
+      .then(() => {
+        setIsSubmitting(false);
+      })
+      .catch(() => {
+        setIsSubmitting(false);
+      });
+  };
+
+  const classTable = classNames("table-responsive", {
+    "submitting-form": isSubmitting
+  });
 
   return (
     <Page
@@ -36,7 +60,7 @@ function MembershipView({
       breadcrumbs={[{ name: "Membership", active: true }]}
     >
       <div className="card border-0">
-        <div className="table-responsive">
+        <div className={classTable}>
           <table className="table table-hover mb-0">
             <thead>
               <tr className="text-capitalize align-middle">
@@ -89,7 +113,7 @@ function MembershipView({
                           {
                             text: "Remove from membership",
                             onClick: () => {
-                              removeMember(
+                              handleClickRemoveMember(
                                 currentCustomer.customerId,
                                 item.userId
                               );

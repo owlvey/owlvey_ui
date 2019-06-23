@@ -73,7 +73,6 @@ const doLogout = () => {
   return dispatch => {
     deleteCookieAuth();
     dispatch(authActions.cleanState());
-    dispatch(configurationActions.cleanState());
     dispatch(customerActions.cleanState());
     dispatch(productActions.cleanState());
     dispatch(entityActions.cleanState());
