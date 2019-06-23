@@ -1,0 +1,10 @@
+.MembershipView {
+  table th {
+    .form-group.position-absolute {
+      right: 20px;
+      .dropdown input {
+        width: 300px;
+      }
+    }
+  }
+}

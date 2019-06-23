@@ -19,6 +19,7 @@
 @import "components/shared/selector";
 @import "components/shared/mirror-comparer";
 @import "components/shared/feature-comparer";
+@import "components/shared/_autocomplete.scss";
 
 // components
 @import "components/header";
@@ -29,6 +30,7 @@
 @import "components/search-input";
 @import "components/button";
 @import "components/process/case/CaseView";
+@import "components/membership/MembershipView";
 
 // themes
 @import "themes/colors";

@@ -11,12 +11,13 @@ function MembershipView({
   currentUser,
   onSearchUser,
   addMember,
-  removeMember,
+  removeMember
 }) {
-  const tableHeaders = [<MdPersonPin size={25} />, "username", ""];
   const [userSelected, setUserSelected] = useState(null);
+  const [textAutocomplete, setTextAutocomplete] = useState("");
   const handleSelectItem = user => {
     setUserSelected(user);
+    setTextAutocomplete(user.username);
   };
   const handleClearItem = () => {
     setUserSelected(null);
@@ -25,40 +26,47 @@ function MembershipView({
   const handleClickAddMember = () => {
     addMember(currentCustomer.customerId, userSelected);
     setUserSelected(null);
+    setTextAutocomplete("");
   };
 
   return (
     <Page
-      className="ProcessStepPage position-relative"
+      className="MembershipView position-relative"
       title="Membership"
       breadcrumbs={[{ name: "Membership", active: true }]}
     >
-      <div className="form-inline">
-        <div className="form-group">
-          <Autocomplete
-            onSearch={onSearchUser}
-            extraClassNames="form-control"
-            displayMember="username"
-            onSelectItem={handleSelectItem}
-            onClearItem={handleClearItem}
-          />
-          <button
-            className="ml-3 btn btn-primary"
-            disabled={!userSelected}
-            onClick={handleClickAddMember}
-          >
-            Add
-          </button>
-        </div>
-      </div>
       <div className="card border-0">
         <div className="table-responsive">
           <table className="table table-hover mb-0">
             <thead>
               <tr className="text-capitalize align-middle">
-                {tableHeaders.map((item, index) => (
-                  <th key={index}>{item}</th>
-                ))}
+                <th>
+                  <MdPersonPin size={25} />
+                </th>
+                <th colSpan="2">
+                  <div className="form-inline">
+                    <span>username</span>
+                    <div className="form-group position-absolute">
+                      <Autocomplete
+                        onChangeInput={setTextAutocomplete}
+                        inputValue={textAutocomplete}
+                        onSearch={onSearchUser}
+                        extraClassNames="form-control"
+                        displayMember="username"
+                        onSelectItem={handleSelectItem}
+                        onClearItem={handleClearItem}
+                        placeholder="Add new user as a member by email"
+                      />
+                      <button
+                        className="ml-3 btn btn-primary"
+                        disabled={!userSelected}
+                        onClick={handleClickAddMember}
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -83,10 +91,10 @@ function MembershipView({
                             onClick: () => {
                               removeMember(
                                 currentCustomer.customerId,
-                                item.userId,
+                                item.userId
                               );
-                            },
-                          },
+                            }
+                          }
                         ]}
                       />
                     )}
