@@ -1,64 +1,48 @@
-import product1Image from "assets/img/products/product_640-1.jpg";
-import product2Image from "assets/img/products/product_640-2.jpg";
-import product3Image from "assets/img/products/product_640-3.jpg";
-import product4Image from "assets/img/products/product_640-4.jpg";
-import product5Image from "assets/img/products/product_640-5.jpg";
-import product6Image from "assets/img/products/product_640-6.jpg";
-
-import user1Image from "assets/img/users/100_1.jpg";
-import user2Image from "assets/img/users/100_2.jpg";
-import user3Image from "assets/img/users/100_3.jpg";
-import user4Image from "assets/img/users/100_4.jpg";
-import user5Image from "assets/img/users/100_5.jpg";
-import user6Image from "assets/img/users/100_6.jpg";
-import user7Image from "assets/img/users/100_7.jpg";
-import user8Image from "assets/img/users/100_8.jpg";
-import user9Image from "assets/img/users/100_9.jpg";
-import user10Image from "assets/img/users/100_10.jpg";
-import user11Image from "assets/img/users/100_11.jpg";
-import user12Image from "assets/img/users/100_12.jpg";
-import user13Image from "assets/img/users/100_13.jpg";
-import user14Image from "assets/img/users/100_14.jpg";
-
 export const productsData = [
   {
     id: 1,
-    image: product1Image,
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
     title: "Admin Template",
     description: "Responsive admin template...",
     right: "$36"
   },
   {
     id: 2,
-    image: product2Image,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLLDkrjwaF-boR8BKvm545dzq6pBD_y9Bgt4YnWEMrh6zJBYGb",
     title: "Schedule App",
     description: "Manage your schedule...",
     right: "$9"
   },
   {
     id: 3,
-    image: product3Image,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR624n-0AP_7W6S_N4ymbFXTYDNw-6cUe4wnUaD1V8nTqV1mWizrw",
     title: "Chat App",
     description: "Realtime chat application...",
     right: "$12"
   },
   {
     id: 4,
-    image: product4Image,
+    image:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
     title: "Wordpress Business Theme",
     description: "Over 100+ templates and pages...",
     right: "$24"
   },
   {
     id: 5,
-    image: product5Image,
+    image:
+      "http://www.lse.ac.uk/website-archive/newsAndMedia/news/archives/images/2016_images/Home-working-480p.jpg",
     title: "Camera App",
     description: "Over 30+ filter...",
     right: "$6.99"
   },
   {
     id: 6,
-    image: product6Image,
+    image:
+      "https://www.pregnancyinfo.ca/wp-content/uploads/2017/01/inpage_working.jpg",
     title: "Calendar App",
     description: "Organize your schedule...",
     right: "$0.99"
@@ -67,72 +51,86 @@ export const productsData = [
 
 export const avatarsData = [
   {
-    avatar: user1Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPVf_2p3o94uiLWhVONWpovMCwnwlewSttRfpqRhCNTkUj-Ly6",
     name: "Tom",
     date: "3 month ago"
   },
   {
-    avatar: user2Image,
+    avatar:
+      "https://i1.social.s-msft.com/profile/u/avatar.jpg?displayname=Vesa+Juvonen&size=extralarge&version=7f0318a7-1fa1-4bc3-bad3-8e87311d99c6",
     name: "Jenny",
     date: "1 year ago"
   },
   {
-    avatar: user3Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS73VEGYo2m82KVC39Ksyqucdyykyaqg1Ty2XzImvEwxqlWwljT",
     name: "Sim",
     date: "2 hour ago"
   },
   {
-    avatar: user4Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTou5o3wcNAQoXljzrMdOXh_E5cECFWHpWQWh2pqLEBsHF3IY2D",
     name: "Christine",
     date: "a month ago"
   },
   {
-    avatar: user5Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV8Vpmuwi6boJwZx-00v65RQlYuau5shzt-MGOYy_xUNVeBt4m",
     name: "Bread",
     date: "6 months ago"
   },
   {
-    avatar: user6Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1VZC0FYnBaU4shi0dV0TowY_A_Xenjkifi4S028MDyJmss8Jg",
     name: "Dan",
     date: "2 years ago"
   },
   {
-    avatar: user7Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTulne_d4xvi4u-DP_lINvTLBwDLCu_CPgxnRF_fSk2DIkRJGRv",
     name: "Merry",
     date: "3 month ago"
   },
   {
-    avatar: user8Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiTVO3MbX4GMDjLkHEMmSs1BRctlclV9xW6wh-qTrLnlClPQsA",
     name: "John",
     date: "1 month ago"
   },
   {
-    avatar: user9Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLjUK6RwT53MLsIe6xyqufC6aWSEpD7mZguxWPdle404mkxUEP",
     name: "Shane",
     date: "7 month ago"
   },
   {
-    avatar: user10Image,
+    avatar:
+      "https://res.cloudinary.com/cognitives/image/upload/c_thumb,dpr_auto,f_auto,fl_lossy,g_face,h_500,q_auto,w_500/wycn0wu68gtnp7fjzk6h",
     name: "Star",
     date: "1 year ago"
   },
   {
-    avatar: user11Image,
+    avatar:
+      "https://www.showthemes.com/vertoh-demo/wp-content/uploads/2013/12/profile-2-262x272.png",
     name: "Jenny",
     date: "3 month ago"
   },
   {
-    avatar: user12Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy3GpiPhviabS8kZNIKZesalExjoaEOipybMm6EoSCa-xlhHci",
     name: "Park",
     date: "4 month ago"
   },
   {
-    avatar: user13Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ-ABgOp-iwxmuI58mOdaIUYeUuPD4TPv7OuSBY5M5SPM_UJ_y",
     name: "Dave",
     date: "9 month ago"
   },
   {
-    avatar: user14Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG_cT4s1Qmh_xjIFAgaLZUUCzWCDmPVI7DVu9pZMnZgf49YSbl",
     name: "Jackson",
     date: "10 month ago"
   }
@@ -140,37 +138,43 @@ export const avatarsData = [
 
 export const userProgressTableData = [
   {
-    avatar: user1Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG_cT4s1Qmh_xjIFAgaLZUUCzWCDmPVI7DVu9pZMnZgf49YSbl",
     name: "Tom",
     date: "3 month ago",
     progress: 75
   },
   {
-    avatar: user2Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ-ABgOp-iwxmuI58mOdaIUYeUuPD4TPv7OuSBY5M5SPM_UJ_y",
     name: "Jenny",
     date: "1 year ago",
     progress: 60
   },
   {
-    avatar: user3Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy3GpiPhviabS8kZNIKZesalExjoaEOipybMm6EoSCa-xlhHci",
     name: "Sim",
     date: "2 hour ago",
     progress: 50
   },
   {
-    avatar: user4Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV8Vpmuwi6boJwZx-00v65RQlYuau5shzt-MGOYy_xUNVeBt4m",
     name: "Christine",
     date: "a month ago",
     progress: 40
   },
   {
-    avatar: user5Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiTVO3MbX4GMDjLkHEMmSs1BRctlclV9xW6wh-qTrLnlClPQsA",
     name: "Bread",
     date: "6 months ago",
     progress: 30
   },
   {
-    avatar: user6Image,
+    avatar:
+      "https://i1.social.s-msft.com/profile/u/avatar.jpg?displayname=Vesa+Juvonen&size=extralarge&version=7f0318a7-1fa1-4bc3-bad3-8e87311d99c6",
     name: "Dan",
     date: "2 years ago",
     progress: 25
@@ -180,7 +184,8 @@ export const userProgressTableData = [
 export const supportTicketsData = [
   {
     id: 1,
-    avatar: user1Image,
+    avatar:
+      "https://i1.social.s-msft.com/profile/u/avatar.jpg?displayname=Vesa+Juvonen&size=extralarge&version=7f0318a7-1fa1-4bc3-bad3-8e87311d99c6",
     name: "Sim",
     date: "30 mins ago",
     text:
@@ -189,7 +194,8 @@ export const supportTicketsData = [
   },
   {
     id: 2,
-    avatar: user2Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiTVO3MbX4GMDjLkHEMmSs1BRctlclV9xW6wh-qTrLnlClPQsA",
     name: "Jane",
     date: "1 hour ago",
     text:
@@ -198,7 +204,8 @@ export const supportTicketsData = [
   },
   {
     id: 3,
-    avatar: user3Image,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy3GpiPhviabS8kZNIKZesalExjoaEOipybMm6EoSCa-xlhHci",
     name: "Tom",
     date: "yesterday",
     text:

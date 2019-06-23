@@ -12,7 +12,7 @@ import {
   ListGroupItem,
   Row,
   Col,
-  Button,
+  Button
 } from "reactstrap";
 
 import { Line } from "react-chartjs-2";
@@ -24,12 +24,6 @@ import { getStackLineChart, stackLineChartOptions } from "demos/chartjs";
 import Page from "shared/Page";
 import UserCard from "shared/UserCard";
 
-import bg1Image from "assets/img/bg/background_640-1.jpg";
-import bg3Image from "assets/img/bg/background_640-3.jpg";
-import bg11Image from "assets/img/bg/background_1920-11.jpg";
-import bg18Image from "assets/img/bg/background_1920-18.jpg";
-import user1Image from "assets/img/users/100_1.jpg";
-
 const CardPage = () => {
   return (
     <Page title="Cards" breadcrumbs={[{ name: "cards", active: true }]}>
@@ -38,7 +32,7 @@ const CardPage = () => {
           <Card className="flex-row">
             <CardImg
               className="card-img-left"
-              src={bg1Image}
+              src={""}
               style={{ width: "auto", height: 150 }}
             />
             <CardBody>
@@ -59,7 +53,7 @@ const CardPage = () => {
             </CardBody>
             <CardImg
               className="card-img-right"
-              src={bg3Image}
+              src={""}
               style={{ width: "auto", height: 150 }}
             />
           </Card>
@@ -81,7 +75,7 @@ const CardPage = () => {
 
         <Col md={6} sm={6} xs={12} className="mb-3">
           <Card>
-            <CardImg top src={bg18Image} />
+            <CardImg top src={""} />
             <CardBody>
               <CardTitle>Card with list group</CardTitle>
               <CardText>
@@ -114,7 +108,7 @@ const CardPage = () => {
                 !!color ? "-" : ""
               }${color}`}
               style={{
-                height: 200,
+                height: 200
               }}
             >
               <CardBody className="d-flex flex-column justify-content-start align-items-start">
@@ -162,7 +156,7 @@ const CardPage = () => {
             subtitle="Project Lead"
             text="Give me a star!"
             style={{
-              height: 300,
+              height: 300
             }}
           />
         </Col>
@@ -178,9 +172,9 @@ const CardPage = () => {
                   "April",
                   "May",
                   "June",
-                  "July",
+                  "July"
                 ],
-                data: [0, 13000, 5000, 24000, 16000, 25000, 10000],
+                data: [0, 13000, 5000, 24000, 16000, 25000, 10000]
               })}
               options={stackLineChartOptions}
             />

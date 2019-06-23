@@ -3,6 +3,30 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
+const getDateBuild = () => {
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dic"
+  ];
+  const padZero = nro => `${nro < 10 ? "0" : ""}${nro}`;
+  const currentDate = new Date();
+  return `Build ${currentDate.getDate()}-${
+    months[currentDate.getMonth()]
+  }-${currentDate.getFullYear()} ${padZero(currentDate.getHours())}.${padZero(
+    currentDate.getMinutes()
+  )}.${padZero(currentDate.getSeconds())}`;
+};
+
 const config = {
   mode: "production",
   context: `${__dirname}/src`,
@@ -58,7 +82,8 @@ const config = {
     new ExtractTextPlugin({ filename: "styles.[name].css" }),
     new webpack.DefinePlugin({
       "process.env.API_URL": `"https://tqtkw327jf.execute-api.us-east-2.amazonaws.com/api"`,
-      "process.env.IS_PROD": `true`
+      "process.env.IS_PROD": `true`,
+      "process.env.buildNumber": `"${getDateBuild()}"`
     })
   ]
 };

@@ -5,6 +5,30 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { UnusedFilesWebpackPlugin } = require("unused-files-webpack-plugin");
 //const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
+const getDateBuild = () => {
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dic"
+  ];
+  const padZero = nro => `${nro < 10 ? "0" : ""}${nro}`;
+  const currentDate = new Date();
+  return `Build ${currentDate.getDate()}-${
+    months[currentDate.getMonth()]
+  }-${currentDate.getFullYear()} ${padZero(currentDate.getHours())}.${padZero(
+    currentDate.getMinutes()
+  )}.${padZero(currentDate.getSeconds())}`;
+};
+
 const config = {
   mode: "development",
   context: `${__dirname}/src`,
@@ -111,7 +135,8 @@ const config = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.DefinePlugin({
       "process.env.API_URL": `"${process.env.API_URL}"`,
-      "process.env.IS_PROD": `false`
+      "process.env.IS_PROD": `false`,
+      "process.env.buildNumber": `"${getDateBuild()}"`
     })
   ]
 };
