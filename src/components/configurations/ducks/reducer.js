@@ -1,7 +1,7 @@
 import types from "./types";
 
 const initialState = {
-  apiUrl: null,
+  apiUrl: null
 };
 
 const appConfReducer = (state = initialState, action) => {
@@ -9,6 +9,8 @@ const appConfReducer = (state = initialState, action) => {
     case types.RECEIVE_API_URL: {
       return { ...state, apiUrl: action.apiUrl };
     }
+    case types.CONFIGURATION_CLEAN_STATE:
+      return initialState;
     default:
       return state;
   }

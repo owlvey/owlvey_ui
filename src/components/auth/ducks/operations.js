@@ -1,12 +1,14 @@
 import request from "helper/request";
 import { setCookieAuth, deleteCookieAuth } from "./selectors";
-import { recieveAuth, recieveAuthUser, logoutAuth } from "./actions";
 import {
   entityActions,
   customerOperations,
   customerActions,
+  authActions,
   productActions,
   productOperations,
+  configurationActions,
+  modalActions
 } from "ducks";
 
 const createUser = user => {
@@ -34,10 +36,10 @@ const doLogin = (username, password) => {
 };
 
 const loadCurrentUserInformation = (dispatch, auth, resolve, reject) => {
-  dispatch(recieveAuth(auth));
+  dispatch(authActions.recieveAuth(auth));
   dispatch(currentUser())
     .then(user => {
-      dispatch(recieveAuthUser(user));
+      dispatch(authActions.recieveAuthUser(user));
       dispatch(listKeys());
       dispatch(customerOperations.getCustomers())
         .then(customers => {
@@ -48,11 +50,11 @@ const loadCurrentUserInformation = (dispatch, auth, resolve, reject) => {
               products => {
                 if (products && products.length > 0) {
                   dispatch(
-                    productActions.setCurrentProduct(products[0].productId),
+                    productActions.setCurrentProduct(products[0].productId)
                   );
                 }
                 resolve(true);
-              },
+              }
             );
           } else {
             resolve(true);
@@ -70,9 +72,12 @@ const loadCurrentUserInformation = (dispatch, auth, resolve, reject) => {
 const doLogout = () => {
   return dispatch => {
     deleteCookieAuth();
-    dispatch(logoutAuth());
-    dispatch(customerActions.clearStore());
-    dispatch(productActions.clearStore());
+    dispatch(authActions.cleanState());
+    dispatch(configurationActions.cleanState());
+    dispatch(customerActions.cleanState());
+    dispatch(productActions.cleanState());
+    dispatch(entityActions.cleanState());
+    dispatch(modalActions.cleanState());
   };
 };
 
@@ -122,5 +127,5 @@ export {
   currentUser,
   loadCurrentUserInformation,
   addKey,
-  listKeys,
+  listKeys
 };

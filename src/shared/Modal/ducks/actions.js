@@ -5,24 +5,24 @@ const optsFullScreen = {
   showExternalClose: true,
   showModalHeader: false,
   showModalFooter: false,
-  isFullScreen: true,
+  isFullScreen: true
 };
 
 const openModal = (componentName, opts = {}) => ({
   type: types.OPEN_MODAL,
   componentName,
-  opts,
+  opts
 });
 
 const openModalFullScreen = (componentName, opts = {}) => ({
   type: types.OPEN_MODAL_FULL_SCREEN,
   componentName,
-  opts: { ...optsFullScreen, ...opts },
+  opts: { ...optsFullScreen, ...opts }
 });
 
 const closeModaStore = componentName => ({
   type: types.CLOSE_MODAL,
-  componentName,
+  componentName
 });
 
 const closeModal = componentName => {
@@ -32,10 +32,13 @@ const closeModal = componentName => {
 
 const closeAllModal = () => ({ type: types.CLOSE_ALL_MODAL });
 
+const cleanState = () => ({ type: types.MODAL_CLEAN_STATE });
+
 export {
   openModal,
   openModalFullScreen,
   closeModal,
   closeModaStore,
   closeAllModal,
+  cleanState
 };

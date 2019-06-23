@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import App from "./App";
 import owlveyStore from "./owlveyStore";
-import { appConfActions } from "ducks";
+import { configurationActions } from "ducks";
 import externalizeComponents from "initialators/externalizeComponents";
 import "initialators/registerModalComponents";
 import loadCurrentAuth from "initialators/loadCurrentAuth";
@@ -17,13 +17,13 @@ const renderApp = AppComponent => {
     <Provider store={owlveyStore}>
       <AppComponent />
     </Provider>,
-    rootEl,
+    rootEl
   );
 };
 
 externalizeComponents(); //TODO: make sure to execute only dev  mode
 owlveyStore.dispatch(
-  appConfActions.recieveAppConfApiUrl(`${process.env.API_URL}`),
+  configurationActions.recieveAppConfApiUrl(`${process.env.API_URL}`)
 );
 loadCurrentAuth(owlveyStore).then(() => {
   renderApp(App);

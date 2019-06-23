@@ -2,7 +2,7 @@ import types from "./types";
 
 const initialState = {
   auth: {},
-  user: {},
+  user: {}
 };
 
 const authReducer = (state = initialState, action) => {
@@ -11,7 +11,7 @@ const authReducer = (state = initialState, action) => {
       return { ...state, auth: action.auth };
     case types.AUTH_USER_SUCCESS:
       return { ...state, user: action.user };
-    case types.AUTH_LOGOUT:
+    case types.AUTH_CLEAN_STATE:
       return initialState;
     default:
       return state;

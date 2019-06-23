@@ -1,5 +1,7 @@
 const RECEIVE_API_URL = "app/conf/APP_CONF_API_URL";
+const CONFIGURATION_CLEAN_STATE = "configuration/CLEAN_STATE";
 
 export default {
   RECEIVE_API_URL,
+  CONFIGURATION_CLEAN_STATE
 };

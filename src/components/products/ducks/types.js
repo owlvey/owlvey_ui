@@ -1,7 +1,7 @@
 const SET_CURRENT_PRODUCT = "products/SET_CURRENT_PRODUCT";
-const CLEAR_STORE = "customer/CLEAR_STORE";
+const PRODUCT_CLEAN_STATE = "customer/CLEAN_STATE";
 
 export default {
   SET_CURRENT_PRODUCT,
-  CLEAR_STORE,
+  PRODUCT_CLEAN_STATE
 };

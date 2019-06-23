@@ -2,9 +2,9 @@ import types from "./types";
 
 const setCurrentCustomer = customerId => ({
   type: types.SET_CURRENT_CUSTOMER,
-  customerId,
+  customerId
 });
 
-const clearStore = () => ({ type: types.SET_CURRENT_CUSTOMER });
+const cleanState = () => ({ type: types.CUSTOMER_CLEAN_STATE });
 
-export { setCurrentCustomer, clearStore };
+export { setCurrentCustomer, cleanState };

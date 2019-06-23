@@ -1,8 +1,8 @@
-import appConfReducer from "./reducer";
+import configurationReducer from "./reducer";
 
-import * as appConfActions from "./actions";
-import * as appConfTypes from "./types";
+import * as configurationActions from "./actions";
+import * as configurationTypes from "./types";
 
-export { appConfTypes, appConfActions };
+export { configurationTypes, configurationActions };
 
-export default appConfReducer;
+export default configurationReducer;

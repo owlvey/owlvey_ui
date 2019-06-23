@@ -2,9 +2,9 @@ import types from "./types";
 
 const setCurrentProduct = productId => ({
   type: types.SET_CURRENT_PRODUCT,
-  productId,
+  productId
 });
 
-const clearStore = () => ({ type: types.CLEAR_STORE });
+const cleanState = () => ({ type: types.PRODUCT_CLEAN_STATE });
 
-export { setCurrentProduct, clearStore };
+export { setCurrentProduct, cleanState };

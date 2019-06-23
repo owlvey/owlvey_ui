@@ -30,16 +30,11 @@ const initialState = {
     benFeature: { counterError: 0 },
     benScenario: { counterError: 0 },
     benStep: { counterError: 0 },
-    benCase: { counterError: 0 },
-  },
+    benCase: { counterError: 0 }
+  }
 };
 
 const entityReducer = (state = initialState, action) => {
-  const ENTITY = action.type.substring(
-    action.type.indexOf("/"),
-    action.type.lastIndexOf("/"),
-  );
-
   switch (action.type) {
     case types.ENTITY.ADD_COLLECTION: {
       const { collectionName, entities, parentOption } = action;
@@ -48,8 +43,8 @@ const entityReducer = (state = initialState, action) => {
           ...state,
           [collectionName]: {
             ...state[collectionName],
-            ...entities,
-          },
+            ...entities
+          }
         };
       } else {
         const { parentCollectionName, parentId, idsChild } = parentOption;
@@ -57,7 +52,7 @@ const entityReducer = (state = initialState, action) => {
           entities,
           parentCollectionName,
           parentId,
-          entityIds: idsChild,
+          entityIds: idsChild
         });
       }
     }
@@ -65,11 +60,11 @@ const entityReducer = (state = initialState, action) => {
       const { collectionName, entity, entityId } = action;
       return {
         ...state,
-        [collectionName]: { ...state[collectionName], [entityId]: entity },
+        [collectionName]: { ...state[collectionName], [entityId]: entity }
       };
     }
-    case types.REQUEST_STATUS.GET_COLLECTION_START:
-    case types.REQUEST_STATUS.GET_COLLECTION_SUCCESS:
+    case types.ENTITY_REQUEST_STATUS.GET_COLLECTION_START:
+    case types.ENTITY_REQUEST_STATUS.GET_COLLECTION_SUCCESS:
       return {
         ...state,
         FETCHING_STATE: {
@@ -77,11 +72,11 @@ const entityReducer = (state = initialState, action) => {
           [action.collectionName]: {
             ...state.FETCHING_STATE[action.collectionName],
             isLoading:
-              action.type === types.REQUEST_STATUS.GET_COLLECTION_START,
-          },
-        },
+              action.type === types.ENTITY_REQUEST_STATUS.GET_COLLECTION_START
+          }
+        }
       };
-    case types.REQUEST_STATUS.GET_COLLECTION_ERROR:
+    case types.ENTITY_REQUEST_STATUS.GET_COLLECTION_ERROR:
       return {
         ...state,
         FETCHING_STATE: {
@@ -90,10 +85,12 @@ const entityReducer = (state = initialState, action) => {
             ...state.FETCHING_STATE[action.collectionName],
             isLoading: false,
             counterError: state.FETCHING_STATE[action.collectionName] + 1,
-            lastMessageError: action.messageError,
-          },
-        },
+            lastMessageError: action.messageError
+          }
+        }
       };
+    case types.ENTITY_CLEAN_STATE:
+      return initialState;
     default:
       return state;
   }

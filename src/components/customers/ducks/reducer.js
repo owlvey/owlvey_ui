@@ -7,7 +7,7 @@ const customerReducer = (state = initialState, action) => {
     case types.SET_CURRENT_CUSTOMER: {
       return { ...state, current: action.customerId };
     }
-    case types.CLEAR_STORE:
+    case types.CUSTOMER_CLEAN_STATE:
       return initialState;
     default:
       return state;
