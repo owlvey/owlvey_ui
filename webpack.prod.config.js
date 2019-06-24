@@ -78,7 +78,7 @@ const config = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "index.html" }),
+    new HtmlWebpackPlugin({ template: "index.html", favicon: "favicon.ico" }),
     new ExtractTextPlugin({ filename: "styles.[name].css" }),
     new webpack.DefinePlugin({
       "process.env.API_URL": `"https://tqtkw327jf.execute-api.us-east-2.amazonaws.com/api"`,

@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 //const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const { UnusedFilesWebpackPlugin } = require("unused-files-webpack-plugin");
-//const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 const getDateBuild = () => {
   const months = [
@@ -121,9 +121,9 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html"
+      template: "index.html",
+      favicon: "favicon.ico"
     }),
-    //new FaviconsWebpackPlugin("./assets/favicons/favicon-development.png"),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new UnusedFilesWebpackPlugin({
