@@ -9,12 +9,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     doLogin: (userName, password) => {
+      dispatch(authOperations.doLogout());
       return dispatch(authOperations.doLogin(userName, password));
-    },
+    }
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SignInView);
