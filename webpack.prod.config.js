@@ -2,6 +2,7 @@ const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 const getDateBuild = () => {
   const months = [
@@ -78,7 +79,8 @@ const config = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "index.html", favicon: "favicon.ico" }),
+    new HtmlWebpackPlugin({ template: "index.html" }),
+    new FaviconsWebpackPlugin({ logo: "./owlvey.png", prefix: "icons/" }),
     new ExtractTextPlugin({ filename: "styles.[name].css" }),
     new webpack.DefinePlugin({
       "process.env.API_URL": `"https://tqtkw327jf.execute-api.us-east-2.amazonaws.com/api"`,

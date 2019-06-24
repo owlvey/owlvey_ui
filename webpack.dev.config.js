@@ -120,10 +120,8 @@ const config = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "index.html",
-      favicon: "favicon.ico"
-    }),
+    new HtmlWebpackPlugin({ template: "index.html" }),
+    new FaviconsWebpackPlugin({ logo: "./owlvey.png", prefix: "icons/" }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new UnusedFilesWebpackPlugin({
