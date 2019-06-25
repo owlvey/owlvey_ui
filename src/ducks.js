@@ -31,7 +31,7 @@ import {
 } from "components/customers/ducks";
 
 import { membershipOperations } from "components/membership/ducks";
-
+import { keyOperations } from "components/Keys/ducks";
 import { modalActions } from "shared/Modal/ducks";
 
 import { benchmarkOperations } from "components/benchmark/ducks";
@@ -52,7 +52,8 @@ export {
   productOperations,
   processOperations,
   benchmarkOperations,
-  membershipOperations
+  membershipOperations,
+  keyOperations
 };
 export {
   entityActions,

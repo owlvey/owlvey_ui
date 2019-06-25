@@ -40,7 +40,6 @@ const loadCurrentUserInformation = (dispatch, auth, resolve, reject) => {
   dispatch(currentUser())
     .then(user => {
       dispatch(authActions.recieveAuthUser(user));
-      dispatch(listKeys());
       dispatch(customerOperations.getCustomers())
         .then(customers => {
           if (customers && customers.length > 0) {
@@ -91,40 +90,10 @@ const currentUser = () => {
   };
 };
 
-const addKey = () => {
-  return (dispatch, getState) => {
-    const { apiUrl } = getState().conf;
-    return request.post(`${apiUrl}/keys`).then(keyAdded => {
-      dispatch(entityActions.addCollection("key", [keyAdded]));
-      return keyAdded;
-    });
-  };
-};
-
-const listKeys = () => {
-  return (dispatch, getState) => {
-    const { apiUrl } = getState().conf;
-    dispatch(entityActions.getCollectionStart("key"));
-    return request
-      .get(`${apiUrl}/keys`)
-      .then(keys => {
-        dispatch(entityActions.addCollection("key", keys));
-        dispatch(entityActions.getColletionSuccess("key"));
-        return keys;
-      })
-      .catch(error => {
-        dispatch(entityActions.getCollectionError("key", error.message));
-        throw error;
-      });
-  };
-};
-
 export {
   createUser,
   doLogin,
   doLogout,
   currentUser,
-  loadCurrentUserInformation,
-  addKey,
-  listKeys
+  loadCurrentUserInformation
 };

@@ -18,6 +18,7 @@ import ScenarioBenContainer from "components/benchmark/scenario/ScenarioBenConta
 import StepBenContainer from "components/benchmark/step/StepBenContainer";
 import CaseBenContainer from "components/benchmark/case/CaseBenContainer";
 import MembershipContainer from "components/membership/MembershipContainer";
+import KeyContainer from "components/Keys/KeyContainer";
 
 import DashboardPage from "shared/pages/DashboardPage";
 import AuthModalPage from "shared/pages/AuthModalPage";
@@ -190,6 +191,7 @@ class MainLayout extends React.Component {
           <Switch>
             <Route exact path="/" component={DashboardPage} />
             <Route exact path="/account" component={AccountContainer} />
+            <Route exact path="/account/keys" component={KeyContainer} />
             <Route exact path="/customers" component={CustomerContainer} />
             <Route exact path="/products" component={ProductContainer} />
             <Route path="/process" component={ProcessContainer} />

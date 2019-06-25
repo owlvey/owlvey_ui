@@ -1,28 +1,25 @@
 import React from "react";
 import Page from "shared/Page";
-import { Card, CardBody, CardHeader, Col, Row, Table } from "reactstrap";
 
 class Account extends React.Component {
   state = {
-    keys: [],
     formData: { name: "", username: "", avatar: "" }
   };
 
   componentDidMount() {
     this.setState({
-      formData: this.props.user,
+      formData: this.props.user
     });
   }
 
   handleChangeInput = event => {
     const { name, value } = event.target;
     this.setState({
-      formData: { ...this.state.formData, [name]: value },
+      formData: { ...this.state.formData, [name]: value }
     });
   };
 
   render() {
-    const keys = this.props.keys;
     const { formData } = this.state;
     return (
       <Page title="Account" breadcrumbs={[{ name: "Account", active: true }]}>
@@ -65,30 +62,6 @@ class Account extends React.Component {
                     className="form-control form-control-lg"
                     readOnly={true}
                   />
-                </div>
-                <div className="position-relative form-group">
-                  <label> Account Application Keys </label>
-                  <Table>
-                    <thead>
-                      <tr>
-                        <th> Index </th>
-                        <th> Key </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {
-                        keys.map((key, index) => (
-                          <tr key={key.keyId}>
-                            <td scope="row"> {index} </td>
-                            <td key={key.keyId}> {key.keyId} </td>
-                          </tr>
-                        ))
-                      }
-                    </tbody>
-                  </Table>
-                  <div>
-                    <button className="btn btn-primary" onClick={this.props.addNewKey}>Add new key</button>
-                  </div>
                 </div>
               </div>
             </div>

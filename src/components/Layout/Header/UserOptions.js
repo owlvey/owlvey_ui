@@ -9,14 +9,14 @@ import {
   MdMessage,
   MdSettingsApplications,
   MdHelp,
-  MdExitToApp,
+  MdExitToApp
 } from "react-icons/md";
 
 function UserOptions({
   toggleUserCardPopover,
   onSignOutClick,
   isOpenUserCardPopover,
-  user,
+  user
 }) {
   return (
     <>
@@ -49,6 +49,12 @@ function UserOptions({
                 to="/account"
               >
                 <MdPersonPin /> Profile
+              </Link>
+              <Link
+                className="border-light list-group-item-action list-group-item"
+                to="/account/keys"
+              >
+                <MdPersonPin /> Keys
               </Link>
               <button className="border-light list-group-item-action list-group-item">
                 <MdInsertChart /> Stats
