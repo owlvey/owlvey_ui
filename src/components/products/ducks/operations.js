@@ -1,5 +1,6 @@
 import request from "helper/request";
 import { entityActions, entitySelectors } from "ducks";
+import { without } from "lodash";
 
 const getProductsByCustomer = customerId => {
   return (dispatch, getState) => {
@@ -78,6 +79,15 @@ const deleteProduct = productId => {
     return request
       .delete(`${apiUrl}/products/${productId}`)
       .then(productDeleted => {
+        const product = getState().entity["product"][productId];
+        const customer = getState().entity["customer"][product.customerId];
+        dispatch(
+          entityActions.updateEntity(
+            "customer",
+            { ...customer, products: without(customer.products, productId) },
+            customer.customerId
+          )
+        );
         dispatch(entityActions.removeEntity("product", productId));
         return productDeleted;
       });

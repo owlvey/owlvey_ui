@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 
-function RemoveCustomerView({
-  customer,
+function RemoveProductView({
+  product,
   updateModalOptions,
-  deleteCustomer,
+  deleteProduct,
   closeModal
 }) {
-  const handleDeleteCustomer = () => {
+  const handleDeleteProduct = () => {
     updateModalOptions({ extraClassNames: "submitting-form" });
-    deleteCustomer(customer.customerId)
+    deleteProduct(product.productId)
       .then(() => {
         closeModal();
       })
@@ -18,18 +18,18 @@ function RemoveCustomerView({
   };
   useEffect(() => {
     updateModalOptions({
-      title: "Remove Customer",
+      title: "Remove Product",
       buttonOkText: "Remove",
-      okActionClick: handleDeleteCustomer
+      okActionClick: handleDeleteProduct
     });
   }, []);
   return (
     <div className="form-group">
       <span>
-        Are you sure you want to Remove the customer <b>{customer.name}</b>?
+        Are you sure you want to Remove the product <b>{product.name}</b>?
       </span>
     </div>
   );
 }
 
-export default RemoveCustomerView;
+export default RemoveProductView;

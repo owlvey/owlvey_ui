@@ -39,7 +39,8 @@ class Modal extends React.Component {
       identifier,
       buttonCancelText,
       buttonOkText,
-      okActionClick
+      okActionClick,
+      extraClassNames
     } = this.props;
     const modalClassNames = classNames("modal fade show", {
       "modal-backdrop-light": isFullScreen
@@ -70,7 +71,7 @@ class Modal extends React.Component {
           </button>
         )}
         <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className="modal-content">
+          <div className={classNames("modal-content", extraClassNames)}>
             {showModalHeader && (
               <div className="modal-header">
                 <h5 className="modal-title">
@@ -124,7 +125,8 @@ Modal.propTypes = {
   autoOpen: PropTypes.bool,
   onCloseModal: PropTypes.func,
   identifier: PropTypes.string,
-  okActionClick: PropTypes.func
+  okActionClick: PropTypes.func,
+  extraClassNames: PropTypes.string
 };
 
 Modal.defaultProps = {

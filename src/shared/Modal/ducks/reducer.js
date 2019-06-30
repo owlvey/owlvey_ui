@@ -21,7 +21,10 @@ const modalReducer = (state = initialState, action) => {
         ...state,
         componentsInModal: state.componentsInModal.map(item => ({
           componentName: item.componentName,
-          opts: item.componentName === componentName ? opts : item.opts,
+          opts:
+            item.componentName === componentName
+              ? { ...item.opts, ...opts }
+              : item.opts,
           viewProps: item.viewProps
         }))
       };

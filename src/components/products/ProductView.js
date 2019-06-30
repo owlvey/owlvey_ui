@@ -59,7 +59,10 @@ class ProductView extends React.Component {
                     }
                   },
                   {
-                    text: "Delete Product"
+                    text: "Delete Product",
+                    onClick: () => {
+                      this.props.openRemoveProductModal(product);
+                    }
                   }
                 ]}
               />

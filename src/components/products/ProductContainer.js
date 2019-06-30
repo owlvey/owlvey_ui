@@ -11,6 +11,7 @@ function ProductContainer({
   products,
   openCreateProductModal,
   openEditProductModal,
+  openRemoveProductModal,
   setCurrentProduct,
   history
 }) {
@@ -24,6 +25,7 @@ function ProductContainer({
         products={products}
         setCurrentProduct={setCurrentProduct}
         openEditProductModal={openEditProductModal}
+        openRemoveProductModal={openRemoveProductModal}
       />
     );
   } else {
@@ -79,7 +81,9 @@ function mapDispatchToProps(dispatch, ownProps) {
           isEditMode: true,
           product
         })
-      )
+      ),
+    openRemoveProductModal: product =>
+      dispatch(modalActions.openModal("removeProduct", { product }))
   };
 }
 
