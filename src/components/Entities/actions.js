@@ -27,6 +27,14 @@ const updateEntity = (collectionName, entity, entityId) => {
   };
 };
 
+const removeEntity = (collectionName, entityId) => {
+  return {
+    type: types.ENTITY.REMOVE_ENTITY,
+    collectionName,
+    entityId
+  };
+};
+
 const getCollectionStart = collectionName => {
   return {
     type: types.ENTITY_REQUEST_STATUS.GET_COLLECTION_START,
@@ -56,6 +64,7 @@ const cleanState = () => ({
 export {
   addCollection,
   updateEntity,
+  removeEntity,
   getCollectionStart,
   getColletionSuccess,
   getCollectionError,

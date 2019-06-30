@@ -36,21 +36,32 @@ class ProductView extends React.Component {
         breadcrumbs={[{ name: "Products", active: true }]}
       >
         <div className="row">
-          {products.map((item, index) => (
+          {products.map((product, index) => (
             <div className="col-md-3" key={index}>
               <UserCard
                 className={classNames(
                   "bg-white",
-                  customerSelected.customerId === item.customerId
+                  customerSelected.customerId === product.customerId
                     ? classCardSelected
                     : "mt-3"
                 )}
-                avatar={item.avatar}
-                title={item.name}
+                avatar={product.avatar}
+                title={product.name}
                 subtitle="View Versions"
                 onSubtitleClick={() => {
-                  this.handleClickViewVersions(item);
+                  this.handleClickViewVersions(product);
                 }}
+                itemActions={[
+                  {
+                    text: "Edit Product",
+                    onClick: () => {
+                      this.props.openEditProductModal(product);
+                    }
+                  },
+                  {
+                    text: "Delete Product"
+                  }
+                ]}
               />
             </div>
           ))}

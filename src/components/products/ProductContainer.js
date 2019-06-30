@@ -10,6 +10,7 @@ function ProductContainer({
   currentCustomer,
   products,
   openCreateProductModal,
+  openEditProductModal,
   setCurrentProduct,
   history
 }) {
@@ -19,7 +20,11 @@ function ProductContainer({
   }
   if (products && products.length > 0) {
     return (
-      <ProductView products={products} setCurrentProduct={setCurrentProduct} />
+      <ProductView
+        products={products}
+        setCurrentProduct={setCurrentProduct}
+        openEditProductModal={openEditProductModal}
+      />
     );
   } else {
     return (
@@ -65,7 +70,16 @@ function mapDispatchToProps(dispatch, ownProps) {
       ownProps.history.push("/process");
     },
     openCreateProductModal: () =>
-      dispatch(modalActions.openModalFullScreen("createProduct"))
+      dispatch(
+        modalActions.openModalFullScreen("productForm", { isEditMode: false })
+      ),
+    openEditProductModal: product =>
+      dispatch(
+        modalActions.openModalFullScreen("productForm", {
+          isEditMode: true,
+          product
+        })
+      )
   };
 }
 

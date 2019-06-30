@@ -217,8 +217,8 @@ class MainLayout extends React.Component {
               component={CaseBenContainer}
             />
             <Route exact path="/membership" component={MembershipContainer} />
-            <Route component={NotFoundPage} />
             {this.routingDevelopment()}
+            <Route component={NotFoundPage} />
           </Switch>
           <ModalContainer />
           <Footer />

@@ -37,9 +37,12 @@ class Modal extends React.Component {
       isFullScreen,
       children,
       identifier,
+      buttonCancelText,
+      buttonOkText,
+      okActionClick
     } = this.props;
     const modalClassNames = classNames("modal fade show", {
-      "modal-backdrop-light": isFullScreen,
+      "modal-backdrop-light": isFullScreen
     });
     return (
       <div
@@ -60,7 +63,7 @@ class Modal extends React.Component {
               position: "absolute",
               top: "15px",
               right: "20px",
-              fontSize: "3rem",
+              fontSize: "3rem"
             }}
           >
             ×
@@ -70,7 +73,9 @@ class Modal extends React.Component {
           <div className="modal-content">
             {showModalHeader && (
               <div className="modal-header">
-                <h5 className="modal-title">{title}</h5>
+                <h5 className="modal-title">
+                  <b>{title}</b>
+                </h5>
                 <button
                   type="button"
                   className="close"
@@ -90,10 +95,14 @@ class Modal extends React.Component {
                   className="btn btn-secondary"
                   data-dismiss="modal"
                 >
-                  Close
+                  {buttonCancelText}
                 </button>
-                <button type="button" className="btn btn-primary">
-                  Save changes
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={okActionClick}
+                >
+                  {buttonOkText}
                 </button>
               </div>
             )}
@@ -115,6 +124,7 @@ Modal.propTypes = {
   autoOpen: PropTypes.bool,
   onCloseModal: PropTypes.func,
   identifier: PropTypes.string,
+  okActionClick: PropTypes.func
 };
 
 Modal.defaultProps = {
@@ -124,6 +134,8 @@ Modal.defaultProps = {
   showModalFooter: true,
   isFullScreen: false,
   autoOpen: true,
+  buttonCancelText: "Cancel",
+  buttonOkText: "Ok"
 };
 
 export default Modal;

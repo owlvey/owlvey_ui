@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "utils/propTypes";
 import classNames from "classnames";
 import Avatar from "shared/Avatar";
+import DotDropdown from "shared/DotDropdown";
 
 const UserCard = ({
   avatar,
@@ -13,17 +14,19 @@ const UserCard = ({
   children,
   className,
   inverse,
+  itemActions,
   ...restProps
 }) => {
   const classes = classNames(
+    "ui-userCard",
     { "bg-gradient-theme": !className },
     "card",
     { "text-white": inverse },
-    className,
+    className
   );
-
   return (
     <div className={classes} {...restProps}>
+      {itemActions.length > 0 && <DotDropdown items={itemActions} />}
       <div className="d-flex justify-content-center align-items-center flex-column card-body">
         <Avatar
           src={avatar}
@@ -57,12 +60,13 @@ UserCard.propTypes = {
   text: PropTypes.string,
   className: PropTypes.string,
   inverse: PropTypes.bool,
-  onSubtitleClick: PropTypes.func,
+  onSubtitleClick: PropTypes.func
 };
 
 UserCard.defaultProps = {
   avatarSize: 80,
   inverse: false,
+  itemActions: []
 };
 
 export default UserCard;

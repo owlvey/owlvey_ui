@@ -1,14 +1,37 @@
 import React from "react";
 import classnames from "classnames";
 
-class CreateCustomer extends React.Component {
-  state = { formData: {}, isSubmitting: false, messageError: null };
+class CustomerFormView extends React.Component {
+  state = {
+    formData: { name: "", avatar: "" },
+    isSubmitting: false,
+    messageError: null
+  };
+
+  componentDidMount() {
+    const { isEditMode, customer } = this.props;
+    if (isEditMode) {
+      this.setState({
+        formData: {
+          name: customer.name,
+          avatar: customer.avatar || "",
+          customerId: customer.customerId
+        }
+      });
+    }
+  }
 
   handleSubmitFormt = event => {
     event.preventDefault();
-    const { createCustomer, closeModal } = this.props;
+    const { submitCustomer, closeModal, isEditMode, customer } = this.props;
+    const { formData } = this.state;
     this.setState({ isSubmitting: true, messageError: null });
-    createCustomer(this.state.formData)
+    const formCustomer = {
+      name: formData.name,
+      avatar: formData.avatar === "" ? null : formData.avatar,
+      customerId: formData.customerId
+    };
+    submitCustomer(formCustomer, isEditMode)
       .then(() => {
         closeModal();
       })
@@ -22,25 +45,28 @@ class CreateCustomer extends React.Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        [name]: value,
+        [name]: value
       },
-      [`${name}Valid`]: value !== "",
+      [`${name}Valid`]: value !== ""
     });
   };
 
   render() {
-    const { isSubmitting, messageError } = this.state;
+    const { isSubmitting, messageError, formData } = this.state;
+    const { isEditMode } = this.props;
+    const titleModal = isEditMode ? "Edit Customer" : "Create Customer";
     return (
       <form
         onSubmit={this.handleSubmitFormt}
         className={classnames({ "submitting-form": isSubmitting })}
       >
-        <h1>Create a new Customer</h1>
+        <h1>{titleModal}</h1>
         <div className="form-group">
           <label>Name</label>
           <input
             type="text"
             name="name"
+            value={formData.name}
             onChange={this.changeInput}
             className="form-control form-control-lg"
             aria-describedby="emailHelp"
@@ -52,6 +78,7 @@ class CreateCustomer extends React.Component {
           <input
             type="text"
             name="avatar"
+            value={formData.avatar}
             onChange={this.changeInput}
             className="form-control form-control-lg"
             placeholder="Avatar URL"
@@ -68,11 +95,11 @@ class CreateCustomer extends React.Component {
               aria-hidden="true"
             />
           )}
-          Create
+          Submit
         </button>
       </form>
     );
   }
 }
 
-export default CreateCustomer;
+export default CustomerFormView;

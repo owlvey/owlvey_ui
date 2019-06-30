@@ -8,16 +8,24 @@ const optsFullScreen = {
   isFullScreen: true
 };
 
-const openModal = (componentName, opts = {}) => ({
+const openModal = (componentName, viewProps = {}, opts = {}) => ({
   type: types.OPEN_MODAL,
+  componentName,
+  opts,
+  viewProps
+});
+
+const updateModalOptions = (componentName, opts = {}) => ({
+  type: types.UPDATE_MODAL_OPTIONS,
   componentName,
   opts
 });
 
-const openModalFullScreen = (componentName, opts = {}) => ({
+const openModalFullScreen = (componentName, viewProps = {}, opts = {}) => ({
   type: types.OPEN_MODAL_FULL_SCREEN,
   componentName,
-  opts: { ...optsFullScreen, ...opts }
+  opts: { ...optsFullScreen, ...opts },
+  viewProps
 });
 
 const closeModaStore = componentName => ({
@@ -37,6 +45,7 @@ const cleanState = () => ({ type: types.MODAL_CLEAN_STATE });
 export {
   openModal,
   openModalFullScreen,
+  updateModalOptions,
   closeModal,
   closeModaStore,
   closeAllModal,

@@ -36,23 +36,37 @@ class CustomerView extends React.Component {
         breadcrumbs={[{ name: "Customers", active: true }]}
       >
         <div className="row">
-          {customers.map((item, index) => (
+          {customers.map((customer, index) => (
             <div className="col-md-3" key={index}>
               <UserCard
                 className={classNames(
                   "can-click",
                   "bg-white",
-                  customerSelected.customerId === item.customerId
+                  customerSelected.customerId === customer.customerId
                     ? classCardSelected
                     : "mt-3"
                 )}
-                avatar={item.avatar}
-                title={item.name}
+                avatar={customer.avatar}
+                title={customer.name}
                 subtitle="View Products"
                 onSubtitleClick={() => {
-                  this.handleClickViewProducts(item);
+                  this.handleClickViewProducts(customer);
                 }}
-                text={`${item.name.length} Products`}
+                text={`${customer.name.length} Products`}
+                itemActions={[
+                  {
+                    text: "Edit Customer",
+                    onClick: () => {
+                      this.props.openEditCustomerModal(customer);
+                    }
+                  },
+                  {
+                    text: "Delete Customer",
+                    onClick: () => {
+                      this.props.openRemoveCustomerModal(customer);
+                    }
+                  }
+                ]}
               />
             </div>
           ))}

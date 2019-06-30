@@ -1,39 +1,52 @@
 import React from "react";
 import classnames from "classnames";
 
-class CreateProduct extends React.Component {
-  state = { formData: {}, isSubmitting: false, messageError: null };
+class ProductForm extends React.Component {
+  state = {
+    formData: { name: "", avatar: "" },
+    isSubmitting: false,
+    messageError: null
+  };
 
   componentDidMount() {
-    this.setState({
-      formData: {
-        ...this.state.formData,
-      },
-    });
+    const { isEditMode, product } = this.props;
+    if (isEditMode) {
+      this.setState({
+        formData: {
+          name: product.name,
+          avatar: product.avatar || "",
+          productId: product.productId
+        }
+      });
+    }
   }
 
   handleSubmitFormt = event => {
     event.preventDefault();
-    const { createProduct, closeModal, currentCustomer } = this.props;
-    this.setState(
-      {
-        formData: {
-          ...this.state.formData,
-          customer_id: currentCustomer.customerId,
-        },
-        isSubmitting: true,
-        messageError: null,
-      },
-      () => {
-        createProduct(this.state.formData)
-          .then(() => {
-            closeModal();
-          })
-          .catch(error => {
-            this.setState({ isSubmitting: false, messageError: error.message });
-          });
-      },
-    );
+    const {
+      submitProduct,
+      isEditMode,
+      closeModal,
+      currentCustomer
+    } = this.props;
+    const { formData } = this.state;
+    const formProduct = {
+      name: formData.name,
+      avatar: formData.avatar === "" ? null : formData.avatar,
+      customer_id: currentCustomer.customerId,
+      productId: formData.productId
+    };
+    this.setState({
+      isSubmitting: true,
+      messageError: null
+    });
+    submitProduct(formProduct, isEditMode)
+      .then(() => {
+        closeModal();
+      })
+      .catch(error => {
+        this.setState({ isSubmitting: false, messageError: error.message });
+      });
   };
 
   changeInput = event => {
@@ -41,25 +54,28 @@ class CreateProduct extends React.Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        [name]: value,
+        [name]: value
       },
-      [`${name}Valid`]: value !== "",
+      [`${name}Valid`]: value !== ""
     });
   };
 
   render() {
-    const { isSubmitting, messageError } = this.state;
+    const { isSubmitting, messageError, formData } = this.state;
+    const { isEditMode, product } = this.props;
+    const titleModal = isEditMode ? "Edit Product" : "Create Product";
     return (
       <form
         onSubmit={this.handleSubmitFormt}
         className={classnames({ "submitting-form": isSubmitting })}
       >
-        <h1>Create a new Product</h1>
+        <h1>{titleModal}</h1>
         <div className="form-group">
           <label>Name</label>
           <input
             type="text"
             name="name"
+            value={formData.name}
             onChange={this.changeInput}
             className="form-control form-control-lg"
             aria-describedby="emailHelp"
@@ -71,6 +87,7 @@ class CreateProduct extends React.Component {
           <input
             type="text"
             name="avatar"
+            value={formData.avatar}
             onChange={this.changeInput}
             className="form-control form-control-lg"
             placeholder="Avatar URL"
@@ -94,4 +111,4 @@ class CreateProduct extends React.Component {
   }
 }
 
-export default CreateProduct;
+export default ProductForm;

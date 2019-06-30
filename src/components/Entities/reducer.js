@@ -1,5 +1,6 @@
 import types from "components/Entities/types";
 import { entitySelectors } from "ducks";
+import { omit } from "lodash";
 
 const initialState = {
   user: {},
@@ -61,6 +62,15 @@ const entityReducer = (state = initialState, action) => {
       return {
         ...state,
         [collectionName]: { ...state[collectionName], [entityId]: entity }
+      };
+    }
+    case types.ENTITY.REMOVE_ENTITY: {
+      return {
+        ...state,
+        [action.collectionName]: omit(
+          state[action.collectionName],
+          action.entityId
+        )
       };
     }
     case types.ENTITY_REQUEST_STATUS.GET_COLLECTION_START:

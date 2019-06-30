@@ -62,7 +62,7 @@ const CardPage = () => {
       <Row>
         <Col md={6} sm={6} xs={12} className="mb-3">
           <Card>
-            <CardImg top src={bg11Image} />
+            <CardImg top />
             <CardBody>
               <CardTitle>Card with image</CardTitle>
               <CardText>
@@ -151,7 +151,6 @@ const CardPage = () => {
       <Row>
         <Col md={5}>
           <UserCard
-            avatar={user1Image}
             title="Chris"
             subtitle="Project Lead"
             text="Give me a star!"

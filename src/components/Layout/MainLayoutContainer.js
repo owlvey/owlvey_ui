@@ -6,7 +6,7 @@ import {
   productActions,
   authOperations,
   entitySelectors,
-  modalActions,
+  modalActions
 } from "ducks";
 
 function mapStateToProps(state) {
@@ -14,17 +14,17 @@ function mapStateToProps(state) {
   const currentCustomer = entitySelectors.getEntityById(
     state,
     "customer",
-    state.customer.current,
+    state.customer.current
   );
   const products = entitySelectors.getCollectionByIds(
     state,
     "product",
-    currentCustomer && currentCustomer.products,
+    currentCustomer && currentCustomer.products
   );
   const currentProduct = entitySelectors.getEntityById(
     state,
     "product",
-    state.product.current,
+    state.product.current
   );
   return {
     authUser: state.auth.user,
@@ -33,13 +33,13 @@ function mapStateToProps(state) {
     products,
     currentProduct,
     isLoadingProduct: entitySelectors.getFetchingStatus(state, "product")
-      .isLoading,
+      .isLoading
   };
 }
 function mapDispatchToProps(dispatch) {
   const setCurrentProduct = (dispatch, product) => {
     dispatch(
-      productActions.setCurrentProduct(product ? product.productId : null),
+      productActions.setCurrentProduct(product ? product.productId : null)
     );
     // if (product)
     //   dispatch(stepOperations.getStepTramaByProduct(product.productId));
@@ -50,23 +50,27 @@ function mapDispatchToProps(dispatch) {
       dispatch(customerActions.setCurrentCustomer(customer.customerId));
       dispatch(productActions.setCurrentProduct(null));
       dispatch(
-        productOperations.getProductsByCustomer(customer.customerId),
+        productOperations.getProductsByCustomer(customer.customerId)
       ).then(products => {
         setCurrentProduct(
           dispatch,
-          products && products.length > 0 ? products[0] : null,
+          products && products.length > 0 ? products[0] : null
         );
       });
     },
     setCurrentProduct: product => setCurrentProduct(dispatch, product),
     doLogout: () => dispatch(authOperations.doLogout()),
     openCreateCustomerModal: () =>
-      dispatch(modalActions.openModalFullScreen("createCustomer")),
+      dispatch(
+        modalActions.openModalFullScreen("customerForm", { isEditMode: false })
+      ),
     openCreateProductModal: () =>
-      dispatch(modalActions.openModalFullScreen("createProduct")),
+      dispatch(
+        modalActions.openModalFullScreen("productForm", { isEditMode: false })
+      )
   };
 }
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(MainLayout);

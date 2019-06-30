@@ -15,13 +15,17 @@ import { TiPlus } from "react-icons/ti";
 function CustomerContainer({
   customers,
   setCurrentCustomer,
-  openCreateCustomerModal
+  openCreateCustomerModal,
+  openEditCustomerModal,
+  openRemoveCustomerModal
 }) {
   if (customers && customers.length > 0) {
     return (
       <CustomerView
         customers={customers}
         setCurrentCustomer={setCurrentCustomer}
+        openEditCustomerModal={openEditCustomerModal}
+        openRemoveCustomerModal={openRemoveCustomerModal}
       />
     );
   } else {
@@ -52,7 +56,18 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     openCreateCustomerModal: () =>
-      dispatch(modalActions.openModalFullScreen("createCustomer")),
+      dispatch(
+        modalActions.openModalFullScreen("customerForm", { isEditMode: false })
+      ),
+    openEditCustomerModal: customer =>
+      dispatch(
+        modalActions.openModalFullScreen("customerForm", {
+          isEditMode: true,
+          customer
+        })
+      ),
+    openRemoveCustomerModal: customer =>
+      dispatch(modalActions.openModal("removeCustomer", { customer })),
     setCurrentCustomer: customer => {
       dispatch(customerActions.setCurrentCustomer(customer.customerId));
       dispatch(
