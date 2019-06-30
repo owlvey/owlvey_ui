@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function RemoveCustomerView({
   customer,
@@ -6,14 +6,17 @@ function RemoveCustomerView({
   deleteCustomer,
   closeModal
 }) {
+  const [messageError, setMessageError] = useState(null);
   const handleDeleteCustomer = () => {
     updateModalOptions({ extraClassNames: "submitting-form" });
     deleteCustomer(customer.customerId)
       .then(() => {
         closeModal();
       })
-      .catch(() => {
-        closeModal();
+      .catch(error => {
+        console.log("error: ", error);
+        setMessageError(error.message);
+        updateModalOptions({ extraClassNames: "" });
       });
   };
   useEffect(() => {
@@ -24,11 +27,16 @@ function RemoveCustomerView({
     });
   }, []);
   return (
-    <div className="form-group">
-      <span>
-        Are you sure you want to Remove the customer <b>{customer.name}</b>?
-      </span>
-    </div>
+    <React.Fragment>
+      <div className="form-group">
+        <span>
+          Are you sure you want to Remove the customer <b>{customer.name}</b>?
+        </span>
+      </div>
+      {messageError && (
+        <small className="form-text text-danger">{messageError}</small>
+      )}
+    </React.Fragment>
   );
 }
 
