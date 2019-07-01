@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import CustomerFormView from "./CustomerFormView";
-import { customerOperations, modalActions } from "ducks";
+import { customerOperations, modalActions, alertActions } from "ducks";
 
 function mapStateToProps(state) {
   return {};
@@ -15,7 +15,8 @@ function mapDispatchToProps(dispatch) {
         return dispatch(customerOperations.addCustomer(customer));
       }
     },
-    closeModal: () => dispatch(modalActions.closeModal("customerForm"))
+    closeModal: () => dispatch(modalActions.closeModal("customerForm")),
+    showAlert: message => dispatch(alertActions.openAlert(message))
   };
 }
 

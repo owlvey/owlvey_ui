@@ -1,6 +1,11 @@
 import { connect } from "react-redux";
 import ProductForm from "./ProductForm";
-import { productOperations, entitySelectors, modalActions } from "ducks";
+import {
+  productOperations,
+  entitySelectors,
+  modalActions,
+  alertActions
+} from "ducks";
 
 function mapStateToProps(state) {
   const currentCustomer = entitySelectors.getEntityById(
@@ -22,6 +27,7 @@ function mapDispatchToProps(dispatch) {
         return dispatch(productOperations.addProduct(product));
       }
     },
+    showAlert: message => dispatch(alertActions.openAlert(message)),
     closeModal: () => dispatch(modalActions.closeModal("productForm"))
   };
 }

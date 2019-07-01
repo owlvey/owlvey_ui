@@ -1,0 +1,10 @@
+const OPEN_ALERT = "alert/OPEN_ALERT";
+const CLOSE_ALERT = "alert/CLOSE_ALERT";
+const CLOSE_ALL_ALERTS = "alert/CLOSE_ALL_ALERTS";
+const ALERT_CLEAN_STATE = "alert/ALERT_CLEAN_STATE";
+export default {
+  OPEN_ALERT,
+  CLOSE_ALERT,
+  CLOSE_ALL_ALERTS,
+  ALERT_CLEAN_STATE
+};

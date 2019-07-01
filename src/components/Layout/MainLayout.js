@@ -42,6 +42,7 @@ import Styleguide from "shared/styleguide/Styleguide";
 
 import { authSelectors } from "ducks";
 import ModalContainer from "shared/Modal/ModalContainer";
+import AlertContainer from "shared/Alert/AlertContainer";
 
 class MainLayout extends React.Component {
   static isSidebarOpen() {
@@ -188,6 +189,7 @@ class MainLayout extends React.Component {
             openCreateCustomerModal={openCreateCustomerModal}
             openCreateProductModal={openCreateProductModal}
           />
+          <AlertContainer />
           <Switch>
             <Route exact path="/" component={DashboardPage} />
             <Route exact path="/account" component={AccountContainer} />

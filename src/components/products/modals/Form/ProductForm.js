@@ -27,7 +27,8 @@ class ProductForm extends React.Component {
       submitProduct,
       isEditMode,
       closeModal,
-      currentCustomer
+      currentCustomer,
+      showAlert
     } = this.props;
     const { formData } = this.state;
     const formProduct = {
@@ -41,8 +42,15 @@ class ProductForm extends React.Component {
       messageError: null
     });
     submitProduct(formProduct, isEditMode)
-      .then(() => {
+      .then(product => {
+        console.log(product);
         closeModal();
+        showAlert(
+          <span>
+            The product <b>{product.name} </b> has been{" "}
+            {isEditMode ? "edited " : "created "} successfully.
+          </span>
+        );
       })
       .catch(error => {
         this.setState({ isSubmitting: false, messageError: error.message });
@@ -62,7 +70,7 @@ class ProductForm extends React.Component {
 
   render() {
     const { isSubmitting, messageError, formData } = this.state;
-    const { isEditMode, product } = this.props;
+    const { isEditMode } = this.props;
     const titleModal = isEditMode ? "Edit Product" : "Create Product";
     return (
       <form

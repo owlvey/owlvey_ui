@@ -5,6 +5,7 @@ import customerReducer from "components/customers/ducks/reducer";
 import productReducer from "components/products/ducks/reducer";
 import entityReducer from "components/Entities";
 import modalReducer from "shared/Modal/ducks/reducer";
+import alertReducer from "shared/Alert/ducks/reducer";
 
 import {
   entityActions,
@@ -33,7 +34,8 @@ import {
 import { membershipOperations } from "components/membership/ducks";
 import { keyOperations } from "components/Keys/ducks";
 import { modalActions } from "shared/Modal/ducks";
-
+import { alertActions } from "shared/Alert/ducks";
+window.alertActions = alertActions;
 import { benchmarkOperations } from "components/benchmark/ducks";
 
 import {
@@ -60,7 +62,8 @@ export {
   authActions,
   customerActions,
   productActions,
-  modalActions
+  modalActions,
+  alertActions
 };
 export {
   entityTypes,
@@ -76,5 +79,6 @@ export default combineReducers({
   customer: customerReducer,
   product: productReducer,
   entity: entityReducer,
-  modalContainer: modalReducer
+  modalContainer: modalReducer,
+  alertContainer: alertReducer
 });

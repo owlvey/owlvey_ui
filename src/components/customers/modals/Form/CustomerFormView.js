@@ -23,7 +23,7 @@ class CustomerFormView extends React.Component {
 
   handleSubmitFormt = event => {
     event.preventDefault();
-    const { submitCustomer, closeModal, isEditMode, customer } = this.props;
+    const { submitCustomer, closeModal, isEditMode, showAlert } = this.props;
     const { formData } = this.state;
     this.setState({ isSubmitting: true, messageError: null });
     const formCustomer = {
@@ -32,8 +32,14 @@ class CustomerFormView extends React.Component {
       customerId: formData.customerId
     };
     submitCustomer(formCustomer, isEditMode)
-      .then(() => {
+      .then(customer => {
         closeModal();
+        showAlert(
+          <span>
+            The customer <b>{customer.name} </b> has been{" "}
+            {isEditMode ? "edited " : "created "} successfully.
+          </span>
+        );
       })
       .catch(error => {
         this.setState({ isSubmitting: false, messageError: error.message });

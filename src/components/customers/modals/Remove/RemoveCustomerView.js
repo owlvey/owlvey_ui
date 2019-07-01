@@ -14,7 +14,6 @@ function RemoveCustomerView({
         closeModal();
       })
       .catch(error => {
-        console.log("error: ", error);
         setMessageError(error.message);
         updateModalOptions({ extraClassNames: "" });
       });
